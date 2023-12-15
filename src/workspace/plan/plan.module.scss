@@ -1,0 +1,11 @@
+.be {
+  &-plan {
+    flex: 1;
+    min-width: 1px;
+    
+    height: 100%;
+    overflow: auto;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+}
