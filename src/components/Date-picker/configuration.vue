@@ -16,18 +16,17 @@
           v-model="configuration!.placeholder"
         />
       </el-form-item>
-      <el-form-item label="字符最大长度">
-        <el-input
-          v-model="configuration!.maxlength"
-        />
+      <el-form-item label="显示格式">
+        <el-select v-model="configuration!.format" placeholder="请选择日期格式">
+          <el-option value="YYYY/MM/DD">XXXX/XX/XX</el-option>
+          <el-option value="YYYY-MM-DD">XXXX-XX-XX</el-option>
+        </el-select>
       </el-form-item>
-      <el-form-item label="是否可以清空">
-        <el-switch
-          v-model="configuration!.clearable"
-          inline-prompt
-          active-text="是"
-          inactive-text="否"
-        />
+      <el-form-item label="数据格式">
+        <el-select v-model="configuration!.valueFormat" placeholder="请选择日期格式">
+          <el-option value="YYYY/MM/DD">XXXX/XX/XX</el-option>
+          <el-option value="YYYY-MM-DD">XXXX-XX-XX</el-option>
+        </el-select>
       </el-form-item>
     </el-form>
   </div>
@@ -35,15 +34,15 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import type {PropType} from 'vue'
-import type { InputEntity } from '../types';
+import type { DatePicker } from '../types';
 
 const props = defineProps({
   entity: {
-    type: Object as PropType<InputEntity>,
+    type: Object as PropType<DatePicker>,
     required: true
   }
 })
-const configuration = ref<InputEntity["configuration"]>()
+const configuration = ref<DatePicker["configuration"]>()
 watch(
   () => props.entity,
   () => {

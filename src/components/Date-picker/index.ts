@@ -1,12 +1,10 @@
-import Thumb from  './thumb.vue';
 import Appear from './appear.vue';
 import Configuration from  './configuration.vue';
-import { Model, InputEntity } from '../types'
+import { Model, DatePicker} from '../types'
 
-export const InputModel: Model = {
-  type: 1,
-  label: '文本框',
-  thumb: Thumb,
+export const datePickerModel: Model = {
+  type: 2,
+  label: '时间',
   appear: Appear,
   configuration: Configuration,
   createEntity
@@ -14,13 +12,14 @@ export const InputModel: Model = {
 
 
 function createEntity() {
-  const entity:InputEntity = {
-    type: InputModel.type,
+  const entity:DatePicker = {
+    type: 2,
     configuration: {
       placeholder: '',
       field: '',
       label: '',
-      maxlength: null,
+      format: '',
+      valueFormat: ''
     }
   }
   return entity;

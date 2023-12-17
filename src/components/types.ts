@@ -3,17 +3,34 @@ import type { Component } from 'vue'
 export interface Model {
   type: number,
   label: string,
-  createEntity: () => any,
   appear: Component,
   configuration: Component,
   thumb?: Component,
+  createEntity: () => Entity
 }
 
-export interface InputEntity {
+export interface Entity {
   type: Model["type"],
-  label:  Model["label"],
   configuration: {
+    field: string
+  }
+}
+
+export interface InputEntity extends Entity {
+  configuration: {
+    field: string,
+    label: string,
     placeholder: string,
-    maxlength: number,
+    maxlength: number|null,
+    clearable: boolean
+  }
+}
+export interface DatePicker extends Entity {
+  configuration: {
+    field: string,
+    label: string,
+    placeholder: string,
+    format: string,
+    valueFormat: string
   }
 }

@@ -1,5 +1,5 @@
 .be {
-  &-models {
+  &-thumbs {
     flex-shrink: 0;
     width: 220px;
 
@@ -9,19 +9,19 @@
     box-sizing: border-box;
   }
 
-  &-models-ul {
+  &-thumbs__ul {
     overflow: auto;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  &-model {
+  &-thumb {
+    margin: 3px 0;
     float: left;
-    min-width: 80px;
+    width: 100%;
     padding: 0 10px;
     height: 40px;
-    margin: 8px;
     display: flex;
     justify-content: center;
     align-items: center;

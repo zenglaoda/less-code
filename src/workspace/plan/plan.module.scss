@@ -3,9 +3,23 @@
     flex: 1;
     min-width: 1px;
     
+    padding: 20px;
     height: 100%;
     overflow: auto;
     border: 1px solid #ccc;
+    margin-left: -1px;
     box-sizing: border-box;
+  }
+  &-plan__entityBox {
+    padding: 10px 10px 0;
+    border: 1px dashed #eee;
+    cursor: pointer;
+    &.is-activated {
+      border-color: #409eff;
+    }
+  }
+  &-plan__actions {
+    justify-content: right;
+    padding: 0px 0px 20px;
   }
 }

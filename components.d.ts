@@ -7,13 +7,17 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Appear: typeof import('./src/components/Input/appear.vue')['default']
-    Configuration: typeof import('./src/components/Input/configuration.vue')['default']
+    Appear: typeof import('./src/components/Date-picker/appear.vue')['default']
+    Configuration: typeof import('./src/components/Date-picker/configuration.vue')['default']
     D: typeof import('./src/components/Input/d.vue')['default']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElOption: typeof import('element-plus/es')['ElOption']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     Input: typeof import('./src/components/Input/input.vue')['default']
     Thumb: typeof import('./src/components/Input/thumb.vue')['default']
     Tools: typeof import('./src/components/tools/index.vue')['default']
