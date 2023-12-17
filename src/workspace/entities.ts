@@ -34,6 +34,7 @@ export const formElements = [
     configuration: {
       placeholder: '请输入生日',
       label: '生日',
+      field: 'birth',
       format: 'YYYY/MM/DD',
       valueFormat: 'YYYY/MM/DD',
     },
@@ -43,15 +44,7 @@ export const formElements = [
     configuration: {
       placeholder: '请输入开始时间',
       label: '开始时间',
-      format: 'YYYY/MM/DD',
-      valueFormat: 'YYYY/MM/DD',
-    },
-  },
-  {
-    type: 2,
-    configuration: {
-      placeholder: '请输入结束时间',
-      label: '结束时间',
+      field: 'startTime',
       format: 'YYYY/MM/DD',
       valueFormat: 'YYYY/MM/DD',
     },
