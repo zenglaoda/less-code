@@ -6,7 +6,7 @@ import { ElDialog } from 'element-plus'
 import 'element-plus/es/components/dialog/style/index'
 import 'element-plus/es/components/button/style/index'
 
-import type { Model, Entity } from '@/components/index'
+import type {Entity } from '@/components/index'
 import type { PropType } from 'vue';
 
 
@@ -53,7 +53,7 @@ export default defineComponent({
       console.log(form)
       state.form = form;
     }
-    const handleClose = (done: () => void) => {
+    const handleClose = () => {
       emit('update:model-value', false)
     }
     const renderFormItem = (entity: Entity) => {

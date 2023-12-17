@@ -16,7 +16,7 @@ export default defineComponent({
     'dragstart'
   ],
 
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const renderThumbItem = (model: Model) => {
       return (<div>
        {model.label}

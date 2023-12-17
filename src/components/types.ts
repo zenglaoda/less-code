@@ -12,7 +12,8 @@ export interface Model {
 export interface Entity {
   type: Model["type"],
   configuration: {
-    field: string
+    field: string,
+    label: string
   }
 }
 
@@ -22,7 +23,7 @@ export interface InputEntity extends Entity {
     label: string,
     placeholder: string,
     maxlength: number|null,
-    clearable: boolean
+    clearable?: boolean
   }
 }
 export interface DatePicker extends Entity {
