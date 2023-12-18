@@ -19,7 +19,6 @@ declare module 'vue' {
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     Options: typeof import('./src/components/Options/index.vue')['default']
-    'Options.vue': typeof import('./src/components/Options.vue/index.vue')['default']
     Thumb: typeof import('./src/components/Input/thumb.vue')['default']
   }
 }
