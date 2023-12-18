@@ -1,4 +1,5 @@
 import { h, defineComponent, reactive } from 'vue';
+
 import styles from './configuration.module.scss';
 import { getModel } from '@/components/index'
 
@@ -8,14 +9,14 @@ import 'element-plus/es/components/radio-group/style/css'
 import 'element-plus/es/components/radio/style/css'
 import 'element-plus/es/components/radio-button/style/css'
 import 'element-plus/es/components/input/style/css'
+
 import type { Entity, Model } from '@/components/index'
 import type { PropType } from 'vue';
 
-
-console.log(styles)
-
 export default defineComponent({
   name: 'Configuration',
+
+  inheritAttrs: false,
 
   components: {
     ElForm,
@@ -26,13 +27,7 @@ export default defineComponent({
     ElInput
   },
 
-  inheritAttrs: false,
-
   props: {
-    models: {
-      type: Array as PropType<Model[]>,
-      default: (() => [] as Model[])
-    },
     entity: {
       type: Object as PropType<Entity>,
       required: true
@@ -46,6 +41,12 @@ export default defineComponent({
   ],
 
   setup(props) {
+    const state = reactive({
+      tab: '1'
+    })
+    const onTabChange = (value: string) => {
+      state.tab = value;
+    }
     const renderCfg = () => {
       const entity = props.entity
       const model: Model = getModel(entity.type);
@@ -67,21 +68,12 @@ export default defineComponent({
         </el-form>
       </div>)
     };
-
-    const state = reactive({
-      tab: '1'
-    })
-    const onTabChange = (value: string) => {
-      state.tab = value;
-    }
-
     return () => (
       <div class={styles['be-cfg']}>
         <div class={styles['be-cfg__tab']}>
           <el-radio-group model-value={state.tab} onUpdate:modelValue={onTabChange}>
             <el-radio-button label="1">字段配置</el-radio-button>
             <el-radio-button label="2">表单配置</el-radio-button>
-            <el-radio-button label="3">控件列表</el-radio-button>
           </el-radio-group>
         </div>
         {state.tab === '1' ? renderCfg() : renderFormCfg()}

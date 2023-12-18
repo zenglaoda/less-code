@@ -19,7 +19,7 @@ function createEntity() {
       field: '',
       label: '',
       format: '',
-      valueFormat: ''
+      valueFormat: '',
     }
   }
   return entity;

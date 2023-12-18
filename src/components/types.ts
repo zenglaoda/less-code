@@ -26,6 +26,7 @@ export interface InputEntity extends Entity {
     clearable?: boolean
   }
 }
+
 export interface DatePicker extends Entity {
   configuration: {
     field: string,
@@ -33,5 +34,26 @@ export interface DatePicker extends Entity {
     placeholder: string,
     format: string,
     valueFormat: string
+  }
+}
+
+export interface Option {
+  label: string,
+  value: string
+} 
+
+export interface RadioEntity extends Entity {
+  configuration: {
+    field: string,
+    label: string,
+    options: Option[]
+  }
+}
+
+export interface SelectEntity extends Entity {
+  configuration: {
+    field: string,
+    label: string,
+    options: Option[]
   }
 }

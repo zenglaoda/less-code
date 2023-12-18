@@ -49,4 +49,29 @@ export const formElements = [
       valueFormat: 'YYYY/MM/DD',
     },
   },
+  {
+    type: 3,
+    configuration: {
+      field: 'radio',
+      label: '性别',
+      options: [
+        { label: '男', value: '1' },
+        { label: '女', value: '2' },
+        { label: '未知', value: '3' }
+      ]
+    },
+  },
+  {
+    type: 4,
+    configuration: {
+      field: 'select',
+      label: '年级',
+      options: [
+        { label: '一年级', value: '1' },
+        { label: '二年级', value: '2' },
+        { label: '三年级', value: '3' }
+      ]
+    },
+  },
+  
 ]

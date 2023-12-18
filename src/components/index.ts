@@ -1,9 +1,13 @@
 import { InputModel  } from './Input'
 import { datePickerModel } from './Date-picker'
+import { RadioModel } from './Radio'
+import { SelectModel } from './Select'
 
 const models = [
   InputModel,
-  datePickerModel
+  datePickerModel,
+  RadioModel,
+  SelectModel
 ]
 
 export default models

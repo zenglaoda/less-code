@@ -1,0 +1,10 @@
+.be {
+  &-options {
+    overflow: auto;
+  }
+  &-option {
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
+}

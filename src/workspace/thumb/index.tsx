@@ -1,11 +1,8 @@
 import { defineComponent } from 'vue';
 import styles from './thumb.module.scss';
-import models from '@/components/index'
+import models from '@/components/index';
 
-
-import type { Model } from '@/components/index'
-
-console.log(styles)
+import type { Model } from '@/components/index';
 
 export default defineComponent({
   name: 'Thumbs',

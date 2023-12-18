@@ -9,6 +9,7 @@
       :activated="currentEntity"
       :formCfg="formCfg"
       @click-entity="onClickEntity"
+      @clear="onClear"
       @remove="onRemove"
     />
     <ConfigurationVue 
@@ -28,6 +29,20 @@ import { formElements } from './entities';
 
 import type { Model, Entity } from '@/components/index'
 
+const TRANSFER_KEY = 'payload'
+const setTransferPayload = (model: Model) => {
+  return JSON.stringify({
+    model: model.type,
+    from: 'THUMB'
+  })
+};
+const getTransferPayload = (data: any) => {
+  try {
+    return JSON.parse(data)
+  } catch(e) {
+    console.log(e)
+  }
+}
 
 const formCfg = reactive({
   labelPosition: 'top',
@@ -39,20 +54,28 @@ const currentEntity = ref<Entity|null>(formElements[0] || null)
 const onClickEntity = (entity: Entity) => {
   currentEntity.value = entity
 }
-const onRemove = () => {
+const onClear = () => {
   currentEntity.value = null;
   entities.value = [];
 }
+const onRemove = (_:Entity, index: number) => {
+  entities.value.splice(index, 1);
+  currentEntity.value = entities.value[index]
+  if (!currentEntity.value) {
+    currentEntity.value = entities.value[index-1]
+  }
+  console.log(currentEntity.value)
+}
 
 const onDragStart = (event: DragEvent, model: Model) => {
-  event.dataTransfer?.setData('modelType', String(model.type))
+  event.dataTransfer?.setData(TRANSFER_KEY, setTransferPayload(model))
 }
 const onDrop = (event: DragEvent) => {
-  const type = event.dataTransfer?.getData('modelType');
-  const entity = createEntity(Number(type))
+  const payload = getTransferPayload(event.dataTransfer?.getData(TRANSFER_KEY))
+  if (!payload || payload.from !== 'THUMB') return
+  const entity = createEntity(payload.model)
   entities.value.push(entity!)
   currentEntity.value = entity
-  console.log(entities.value)
 }
 </script>
 <style lang="scss" scoped>

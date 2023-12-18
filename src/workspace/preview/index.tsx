@@ -50,17 +50,18 @@ export default defineComponent({
         const field = entity.configuration.field as string;
         form[field] = '';
       })
-      console.log(form)
       state.form = form;
     }
-    const handleClose = () => {
+    const close = () => {
       emit('update:model-value', false)
+    }
+    const handleClose = () => {
+      close();
     }
     const renderFormItem = (entity: Entity) => {
       const model = getModel(entity.type);
-      console.log(state.form)
       return (
-        <el-form-item label={entity.configuration?.label} >
+        <el-form-item label={entity.configuration.label} >
           {h(model.appear, {
             entity: entity,
             form: state.form
@@ -68,22 +69,19 @@ export default defineComponent({
         </el-form-item>
       );
     }
-    const close = () => {
-      emit('update:model-value', false)
-    }
     const renderFooter = () => {
       return () => (<div>
         <el-button onClick={close}>取消</el-button>
         <el-button type="primary" onClick={close}>确定</el-button>
       </div>)
     }
+
     generateForm();
     watch (
       () => props.entities,
       generateForm,
       { immediate: true }
     );
-    console.log('state.form', state.form)
     
     return () => (
       <el-dialog 
@@ -91,6 +89,7 @@ export default defineComponent({
         model-value={props.modelVlue}
         before-close={handleClose}
         width="600"
+        title="自定义表单"
         v-slots={{footer: renderFooter()}}
       >
         <el-form
@@ -101,7 +100,7 @@ export default defineComponent({
           {props.entities.map(entity => renderFormItem(entity))}
         </el-form>
         <div>
-          <h3>输入内容:</h3>
+          <h3>表单数据:</h3>
           <pre>
             {JSON.stringify(state.form, null, 4)}
           </pre>

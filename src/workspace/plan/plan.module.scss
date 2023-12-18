@@ -11,12 +11,25 @@
     box-sizing: border-box;
   }
   &-plan__entityBox {
+    position: relative;
     padding: 10px 10px 0;
     border: 1px dashed #eee;
     cursor: pointer;
     &.is-activated {
       border-color: #409eff;
     }
+    &:hover {
+      border-color: #409eff;
+    }
+  }
+  &-plan__entityDelete {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 0;
+  }
+  &-plan__entityBox:hover &-plan__entityDelete {
+    display: block;
   }
   &-plan__actions {
     justify-content: right;
